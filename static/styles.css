@@ -1,0 +1,52 @@
+body {
+  padding: 0px;
+  margin: 0px;
+
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+}
+
+div#header {
+  padding: 1em;
+  background-color: #48f;
+  border: 2px;
+  border-style: solid;
+  border-color: #fff;
+  color: #fff;
+}
+
+#header p {
+  margin-left: 1em;
+}
+
+span.pre {
+  font-family: Courier;
+}
+
+div#content {
+  padding: 1em;
+  width: 80%;
+}
+
+div.episode-title {
+  background-color: #acf;
+  padding: 0.5em;
+}
+
+div.player {
+  margin: 0.5em;
+}
+
+div.episode-content {
+  margin: 0.5em;
+  margin-left: 1em;
+}
+
+div#footer {
+  padding: 0.25em;
+  background-color: #48f;
+  border: 2px;
+  border-style: solid;
+  border-color: #fff;
+  font-size: 0.75em;
+  color: #fff;
+}

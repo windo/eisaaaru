@@ -1,0 +1,67 @@
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
+>
+  <channel>
+    <atom:link href="{{ .Site.BaseURL }}/index.xml" rel="self" type="application/rss+xml" />
+    <title>{{ .Site.Title }}</title>
+    <author>{{ .Site.Params.Email }}</author>
+    <link>{{ .Site.BaseURL }}</link>
+    <description>{{ .Site.Params.Description }}</description>
+    <language>{{ .Site.Language.Lang }}</language>
+    <!-- itunes -->
+    <itunes:summary>{{ .Site.Params.Description }}</itunes:summary>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+    <itunes:category text="Games &amp; Hobbies">
+      <itunes:category text="Hobbies" />
+    </itunes:category>
+    <itunes:category text="Health">
+      <itunes:category text="Self-Help" />
+      <itunes:category text="Kids &amp; Family" />
+    </itunes:category>
+    <itunes:category text="Music" />
+    <itunes:category text="Science &amp; Medicine" />
+    <itunes:category text="Technology" />
+    <itunes:owner>
+      <itunes:name>{{ .Site.Params.Author }}</itunes:name>
+      <itunes:email>{{ .Site.Params.Email }}</itunes:email>
+    </itunes:owner>
+    <itunes:author>{{ .Site.Params.Author }}</itunes:author>
+    <itunes:image href="{{ .Site.BaseURL }}/images/eisaaaru7.jpg"></itunes:image>
+    <!-- googleplay -->
+    <googleplay:author>{{ .Site.Params.Author }}</googleplay:author>
+    <googleplay:email>{{ .Site.Params.Email }}</googleplay:email>
+    <googleplay:description>{{ .Site.Params.Description }}</googleplay:description>
+    <googleplay:image href="{{ .Site.BaseURL }}/images/ei_saa_aru_placeholder.png"></googleplay:image>
+    {{ range .Site.Pages }}
+      {{ if .Params.Audio }}
+        <item>
+          <title>{{ .Title }}</title>
+          <author>{{ .Site.Params.Email }}</author>
+          <enclosure url="{{ .Site.BaseURL }}/audio/{{ .Params.Audio }}" length="{{ .Params.Audio_Length }}" type="audio/mpeg" />
+          <description>
+            {{- .RawContent }}
+          </description>
+          <itunes:summary>
+            {{- .RawContent }}
+          </itunes:summary>
+          <googleplay:description>
+            {{- .RawContent }}
+          </googleplay:description>
+          <content:encoded>{{ "<" | safeHTML }}![CDATA[
+            {{- .Content -}}
+          ]]></content:encoded>
+          <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+          <guid>{{ .Permalink }}</guid>
+          <itunes:author>{{ .Site.Params.Author }}</itunes:author>
+          <itunes:explicit>no</itunes:explicit>
+          <itunes:duration>{{ .Params.Audio_Duration }}</itunes:duration>
+          <googleplay:explicit>no</googleplay:explicit>
+        </item>
+      {{ end }}
+    {{ end }}
+  </channel>
+</rss>

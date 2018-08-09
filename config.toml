@@ -1,0 +1,12 @@
+baseURL = "https://p6drad-teel.net/eisaaaru"
+languageCode = "et-ee"
+defaultcontentlanguage = "et"
+title = "Ei saa aru"
+disableKinds = ["sitemap"]
+
+taxonomies = {}
+
+[params]
+  description = "Podcast tehnoloogiast ja inimeseks olemisest"
+  author = "Ei saa aru juhid"
+  email = "eisaaaru@p6drad-teel.net"

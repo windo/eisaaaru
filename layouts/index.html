@@ -1,0 +1,26 @@
+{{ define "main" }}
+  <p>
+    "Ei saa aru" (või eisaaru, kui tühikuklahv ei tööta) on eestikeelne
+    podcast. Juttu on tehnoloogiast ja inimeseks olemisest. Alati väga
+    põnevatest ja paeluvatest teemadest.
+  </p>
+  <p>
+    Lisa meid oma podcasti äpis: <a href="index.xml">RSS</a> ehk <span class="pre">{{ .Site.BaseURL }}/index.xml</span>.
+    Igaks juhuks võid eelnevalt varasemate osade kokkuvõtetega ka tutvuda:
+  </p>
+  {{ range .Site.Pages }}
+    {{ if .Params.Audio }}
+      <div class="episode-title">
+        "{{ .Title }}", <i>{{ .Date.Format "Mon, 02 Jan 2006" | safeHTML }}</i>
+      </div>
+      <div class="player">
+        <audio controls preload="metadata">
+          <source src="{{ .Site.BaseURL }}/audio/{{ .Params.Audio }}" type="audio/mpeg">
+        </audio>
+      </div>
+      <div class="episode-content">
+        {{- .Content -}}
+      </div>
+    {{ end }}
+  {{ end }}
+{{ end }}
