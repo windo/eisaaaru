@@ -1,4 +1,4 @@
-baseURL = "https://p6drad-teel.net/eisaaaru"
+baseURL = "https://eisaaaru.ee"
 languageCode = "et-ee"
 defaultcontentlanguage = "et"
 title = "Ei saa aru"
@@ -8,5 +8,5 @@ taxonomies = {}
 
 [params]
   description = "Podcast tehnoloogiast ja inimeseks olemisest"
-  author = "Ei saa aru juhid"
+  author = "Henno ja Siim"
   email = "eisaaaru@p6drad-teel.net"

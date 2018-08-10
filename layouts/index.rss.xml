@@ -43,13 +43,13 @@
           <author>{{ .Site.Params.Email }}</author>
           <enclosure url="{{ .Site.BaseURL }}/audio/{{ .Params.Audio }}" length="{{ .Params.Audio_Length }}" type="audio/mpeg" />
           <description>
-            {{- .RawContent }}
+            {{- .Params.Description }}
           </description>
           <itunes:summary>
-            {{- .RawContent }}
+            {{- .Params.Description }}
           </itunes:summary>
           <googleplay:description>
-            {{- .RawContent }}
+            {{- .Params.Description }}
           </googleplay:description>
           <content:encoded>{{ "<" | safeHTML }}![CDATA[
             {{- .Content -}}

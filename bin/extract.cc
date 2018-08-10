@@ -11,12 +11,12 @@ namespace po = boost::program_options;
 
 std::string format_hms(int seconds) {
   std::ostringstream hms;
-  if(seconds >= 3600) {
+  if (seconds >= 3600) {
     auto hours = seconds / 3600;
     hms << hours << ":";
     seconds -= hours * 3600;
   }
-  if(seconds >= 60) {
+  if (seconds >= 60) {
     auto minutes = seconds / 60;
     hms << minutes << ":";
     seconds -= minutes * 60;
@@ -26,22 +26,24 @@ std::string format_hms(int seconds) {
 }
 
 std::string get_basename(std::string file_name) {
-  char *butchered_file_name = (char*) malloc(file_name.size());
-  if(butchered_file_name == NULL) {
+  char *butchered_file_name = (char*) malloc(file_name.size() + 1);
+  if (butchered_file_name == NULL) {
     return "";
   }
-  auto i = 0;
+  int i = 0;
   for (auto p = file_name.begin(); p != file_name.end(); ++p, ++i) {
     butchered_file_name[i] = *p;
   }
+  butchered_file_name[i] = 0;
   return basename(butchered_file_name);
 }
 
 std::string get_chapters(TagLib::ID3v2::FrameList chapter_frames) {
   std::ostringstream chapters;
-  for(auto c = chapter_frames.begin(); c != chapter_frames.end(); ++c) {
+  int i = 1;
+  for (auto c = chapter_frames.begin(); c != chapter_frames.end(); ++c, ++i) {
     auto chapter = dynamic_cast<TagLib::ID3v2::ChapterFrame*> (*c);
-    chapters << "  1. " << chapter->embeddedFrameListMap()["TIT2"][0]->toString().to8Bit(true) << std::endl;
+    chapters << "  " << i << ". " << chapter->embeddedFrameListMap()["TIT2"][0]->toString().to8Bit(true) << std::endl;
   }
   return chapters.str();
 }
@@ -60,7 +62,7 @@ int main(int argc, char **argv) {
       options(desc).positional(p).run(), vm);
   po::notify(vm);
 
-  if(vm.count("input-file") != 1) {
+  if (vm.count("input-file") != 1) {
     std::cout << desc;
     return 1;
   }
@@ -71,13 +73,9 @@ int main(int argc, char **argv) {
     std::cout << "Expecting ID3v2 tag." << std::endl;;
     return 1;
   }
-  /*
-   * audio: "podcast_siimuga_edit_1.mp3"
-   * audio_length: 16789129
-   * audio_duration: "46:36"
-   */
   std::cout << "---" << std::endl;
   std::cout << "title: \"" << f.tag()->title().to8Bit(true) << "\"" << std::endl;
+  std::cout << "description: \"" << f.tag()->comment().to8Bit(true) << "\"" << std::endl;
   std::cout << "audio: \"" << get_basename(file_name) << "\"" << std::endl;
   std::cout << "audio_length: " << f.length() << std::endl;
   std::cout << "audio_duration: \"" << format_hms(f.audioProperties()->lengthInSeconds()) << "\"" << std::endl;
