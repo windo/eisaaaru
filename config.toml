@@ -2,7 +2,7 @@ baseURL = "https://eisaaaru.ee"
 languageCode = "et-ee"
 defaultcontentlanguage = "et"
 title = "Ei saa aru"
-disableKinds = ["sitemap"]
+disableKinds = ["sitemap", "section"]
 
 taxonomies = {}
 

@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <div class="episode-title">
+    "{{ .Title }}", <i>{{ .Date.Format "Mon, 02 Jan 2006" | safeHTML }}</i>
+  </div>
+  <div class="player">
+    <audio controls preload="metadata">
+      <source src="{{ .Site.BaseURL }}/audio/{{ .Params.Audio }}" type="audio/mpeg">
+    </audio>
+  </div>
+  <div class="episode-content">
+    {{- .Content -}}
+  </div>
+{{ end }}

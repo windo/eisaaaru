@@ -35,7 +35,7 @@
     <googleplay:author>{{ .Site.Params.Author }}</googleplay:author>
     <googleplay:email>{{ .Site.Params.Email }}</googleplay:email>
     <googleplay:description>{{ .Site.Params.Description }}</googleplay:description>
-    <googleplay:image href="{{ .Site.BaseURL }}/images/ei_saa_aru_placeholder.png"></googleplay:image>
+    <googleplay:image href="{{ .Site.BaseURL }}/images/eisaaaru7.jpg"></googleplay:image>
     {{ range .Site.Pages }}
       {{ if .Params.Audio }}
         <item>
