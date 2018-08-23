@@ -18,6 +18,16 @@ div#header {
   margin-left: 1em;
 }
 
+ul li img {
+  display: inline-block;  
+  vertical-align: middle; 
+}
+
+ul li span {
+  display: inline-block;  
+  vertical-align: middle; 
+}
+
 span.pre {
   font-family: Courier;
 }
