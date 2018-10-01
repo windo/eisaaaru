@@ -19,14 +19,11 @@ div#header {
   margin-left: 1em;
 }
 
-ul li img {
+ul li .banner {
   display: inline-block;  
   vertical-align: middle; 
-}
-
-ul li span {
-  display: inline-block;  
-  vertical-align: middle; 
+  margin-bottom: 0.3em;
+  margin-top: 0.3em;
 }
 
 span.pre {
