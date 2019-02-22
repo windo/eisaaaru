@@ -4,6 +4,9 @@ defaultcontentlanguage = "et"
 title = "Ei saa aru"
 disableKinds = ["sitemap", "section"]
 
+noTimes = true
+noChmod = true
+
 taxonomies = {}
 
 [params]
