@@ -1,4 +1,5 @@
 #include <boost/program_options.hpp>
+#include <ctime>
 #include <iostream>
 #include <libgen.h>
 #include <sstream>
@@ -48,6 +49,14 @@ std::string get_chapters(TagLib::ID3v2::FrameList chapter_frames) {
   return chapters.str();
 }
 
+std::string date() {
+  char buf[256];
+  const auto now = time(NULL);
+  auto tstruct = gmtime(&now);
+  strftime(buf, 256, "%Y-%m-%dT%H:%M:%SZ", tstruct);
+  return std::string(buf);
+}
+
 int main(int argc, char **argv) {
   po::options_description desc;
   desc.add_options()
@@ -76,10 +85,13 @@ int main(int argc, char **argv) {
   std::cout << "---" << std::endl;
   std::cout << "title: \"" << f.tag()->title().to8Bit(true) << "\"" << std::endl;
   std::cout << "description: \"" << f.tag()->comment().to8Bit(true) << "\"" << std::endl;
+  std::cout << "date: " << date() << std::endl;
   std::cout << "audio: \"" << get_basename(file_name) << "\"" << std::endl;
   std::cout << "audio_length: " << f.length() << std::endl;
   std::cout << "audio_duration: \"" << format_hms(f.audioProperties()->lengthInSeconds()) << "\"" << std::endl;
   std::cout << "---" << std::endl;
   std::cout << "Teemad:" << std::endl << std::endl;
   std::cout << get_chapters(f.ID3v2Tag()->frameListMap()["CHAP"]);
+  std::cout << std::endl << "Viited:" << std::endl << std::endl;
+  std::cout << "  * ..." << std::endl;
 }
