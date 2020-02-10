@@ -53,6 +53,7 @@ div#content {
 div.episode-title {
   background-color: #acf;
   padding: 0.5em;
+  margin: 0.2em;
 }
 
 div.player {

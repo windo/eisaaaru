@@ -6,15 +6,23 @@
   <p>
     Lisa meid oma podcasti äpis:<br>
     <ul>
-      <li><span class="banner"><a href="https://itunes.apple.com/us/podcast/ei-saa-aru/id1424289028?mt=2" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/assets/shared/badges/en-gb/podcast-lrg.svg) no-repeat;width:133px;height:34px;background-size:contain;"></a></span>
-      <li><a href='https://playmusic.app.goo.gl/?ibi=com.google.PlayMusic&amp;isi=691797987&amp;ius=googleplaymusic&amp;apn=com.google.android.music&amp;link=https://play.google.com/music/m/I55lstokjlaw37c2thqcd4ewaju?t%3DEi_saa_aru%26pcampaignid%3DMKT-na-all-co-pr-mu-pod-16' rel='nofollow'><img class="banner" width='125px' alt='Listen on Google Play Music' src='https://play.google.com/intl/en_us/badges-music/images/badges/en_badge_web_music.png'/></a>
+      <li><span class="banner"><a href="https://itunes.apple.com/us/podcast/ei-saa-aru/id1424289028?mt=2" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/assets/shared/badges/en-gb/podcast-lrg.svg) no-repeat;width:164px;height:40px;background-size:contain;"></a></span>
+      <!--<li><a href='https://playmusic.app.goo.gl/?ibi=com.google.PlayMusic&amp;isi=691797987&amp;ius=googleplaymusic&amp;apn=com.google.android.music&amp;link=https://play.google.com/music/m/I55lstokjlaw37c2thqcd4ewaju?t%3DEi_saa_aru%26pcampaignid%3DMKT-na-all-co-pr-mu-pod-16' rel='nofollow'><img class="banner" width='125px' alt='Listen on Google Play Music' src='https://play.google.com/intl/en_us/badges-music/images/badges/en_badge_web_music.png'/></a>-->
+      <li><a href="https://open.spotify.com/show/6wSMEMko0DorsAqGtZiySb"><img class="banner" src="{{ .Site.BaseURL }}/images/spotify-podcast-badge-blk-grn-165x40.png" alt="Listen on Spotify"/></a>
       <li>Või lisa otse <a href="index.xml">RSS</a> ehk <span class="pre">{{ .Site.BaseURL }}/index.xml</span>.
     </ul>
   <p>
+  <p>
+    Kui sa ka ei saa millestki aru, siis anna aga teada:<br>
+    <ul>
+      <li>eisaaaru@eisaaaru.ee
+      <li><a href="https://fb.com/eisaaaru">fb.com/eisaaaru</a>
+    </ul>
+  </p>
   </p>
     Senised osad:
   </p>
-  {{ range .Site.Pages }}
+  {{ range first 10 .Site.Pages }}
     {{ if .Params.Audio }}
       <div class="episode-title">
         "{{ .Title }}", <i>{{ .Date.Format "Mon, 02 Jan 2006" | safeHTML }}</i>
@@ -26,6 +34,13 @@
       </div>
       <div class="episode-content">
         {{- .Content -}}
+      </div>
+    {{ end }}
+  {{ end }}
+  {{ range after 10 .Site.Pages }}
+    {{ if .Params.Audio }}
+      <div class="episode-title">
+        "<a href="{{ .Permalink }}">{{ .Title }}</a>", <i>{{ .Date.Format "Mon, 02 Jan 2006" | safeHTML }}</i>
       </div>
     {{ end }}
   {{ end }}
