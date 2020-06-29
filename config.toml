@@ -10,6 +10,6 @@ noChmod = true
 taxonomies = {}
 
 [params]
-  description = "Podcast tehnoloogiast ja inimeseks olemisest"
+  description = "Podcast inimeseks olemisest ja tehnoloogiast"
   author = "Henno ja Siim"
   email = "eisaaaru@eisaaaru.ee"
