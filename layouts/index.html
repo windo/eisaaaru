@@ -1,7 +1,8 @@
 {{ define "main" }}
   <p>
-    "Ei saa aru" on podcast tehnoloogiast ja inimeseks olemisest. Jutuks
-    tulevad ainult väga paeluvad ja põnevad teemad.
+    "Ei saa aru" on podcast inimeseks olemisest ja tehnoloogiast. Proovime koos
+    aru saada, kuidas toimivad inimsuhted, kosmosetehnika, muusika, teadvus,
+    jalgrattad, jne.
   </p>
   <p>
     Lisa meid oma podcasti äpis:<br>
@@ -20,7 +21,7 @@
     </ul>
   </p>
   </p>
-    Senised osad:
+    Hiljutised osad:
   </p>
   {{ range first 10 .Site.Pages }}
     {{ if .Params.Audio }}
