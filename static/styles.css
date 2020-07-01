@@ -8,6 +8,7 @@ body {
 
 div#header {
   padding: 1em;
+  padding-left: calc((100% - max(min(80%, 25cm), 10cm)) / 2);
   background-color: #48f;
   border: 2px;
   border-style: solid;
@@ -47,7 +48,9 @@ span.pre {
 
 div#content {
   padding: 1em;
-  width: 80%;
+  width: max(min(80%, 25cm), 5cm);
+  position: relative;
+  left: calc((100% - max(min(80%, 25cm), 5cm)) / 2);
 }
 
 div.episode-title {
@@ -67,6 +70,7 @@ div.episode-content {
 
 div#footer {
   padding: 0.25em;
+  padding-left: calc((100% - max(min(80%, 25cm), 10cm)) / 2);
   background-color: #48f;
   border: 2px;
   border-style: solid;

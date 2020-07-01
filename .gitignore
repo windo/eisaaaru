@@ -3,3 +3,4 @@
 bin/extract
 bin/hugo
 public
+staging

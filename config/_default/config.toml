@@ -1,13 +1,13 @@
+title = "Ei saa aru"
 baseURL = "https://eisaaaru.ee"
+
 languageCode = "et-ee"
 defaultcontentlanguage = "et"
-title = "Ei saa aru"
-disableKinds = ["sitemap", "section"]
 
+disableKinds = ["sitemap", "section"]
+taxonomies = {}
 noTimes = true
 noChmod = true
-
-taxonomies = {}
 
 [params]
   description = "Podcast inimeseks olemisest ja tehnoloogiast"
