@@ -3,6 +3,5 @@
 cd $(dirname $(readlink -f $0))/..
 dirs="public staging content static resources layouts archetypes"
 
-find $dirs | xargs chgrp eisaaaru
-find $dirs -type f | xargs chmod g+w
-find $dirs -type d | xargs chmod g+s
+find $dirs ! -group eisaaaru | xargs --no-run-if-empty chgrp eisaaaru
+find $dirs ! -perm -g+w | xargs --no-run-if-empty chmod g+w
